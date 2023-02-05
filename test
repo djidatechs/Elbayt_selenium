@@ -8,25 +8,17 @@ from selenium.webdriver.common.by import By
 driver = webdriver.ChromiumEdge()
 
 
-# Navigate to the page
+
 driver.get("https://elbaytdz.netlify.app/signup")
 
-# Wait for the URL to change to the desired URL
+
 wait = WebDriverWait(driver, 200)
 wait.until(EC.url_to_be("https://elbaytdz.netlify.app/annonces/new"))
 
 sleep(5)
 
-# get all Elements 
-
-# get buttons 
-
 button_1 = driver.find_element(By.CLASS_NAME,"selenium_btn1")
-button_2 = driver.find_element(By.CLASS_NAME,"selenium_btn2")
-button_3 = driver.find_element(By.CLASS_NAME,"selenium_btn3")
-button_4 = driver.find_element(By.CLASS_NAME,"selenium_btn4")
 
-# get Etape 1 Elements 
 selenium_type = driver.find_element(By.CLASS_NAME,"selenium_type")
 selenium_wilaya = driver.find_element(By.CLASS_NAME,"selenium_wilaya")
 selenium_commune = driver.find_element(By.CLASS_NAME,"selenium_commune")
@@ -34,51 +26,56 @@ selenium_lat = driver.find_element(By.CLASS_NAME,"selenium_lat")
 selenium_lng = driver.find_element(By.CLASS_NAME,"selenium_lng")
 
 
-# get Etape 2 Elements 
-selenium_surface = driver.find_element(By.CLASS_NAME,"selenium_surface")
-selenium_price = driver.find_element(By.CLASS_NAME,"selenium_price")
-selenium_images = driver.find_element(By.CLASS_NAME,"selenium_images")
-
-
-# get Etape 3 Elements 
-selenium_phone = driver.find_element(By.CLASS_NAME,"selenium_phone")
-selenium_description = driver.find_element(By.CLASS_NAME,"selenium_description")
-
-# Etape 1 
-
 select_w = Select(selenium_wilaya)
 print (select_w)
-select_w.select_by_value(16) # alger
+select_w.select_by_value("16") 
+sleep(2)
 select_c = Select(selenium_commune)
-select_w.select_by_value(554) #Bab el wed
+select_c.select_by_value("558") 
+selenium_type.send_keys("selenium_Example")
 selenium_lat.send_keys("36.752887")
 selenium_lng.send_keys("3.042048")
 button_1.click()
+sleep(1)
 
-#Etape2
+
+
+button_2 = driver.find_element(By.CLASS_NAME,"selenium_btn2")
+
+selenium_surface = driver.find_element(By.CLASS_NAME,"selenium_surface")
+selenium_price = driver.find_element(By.CLASS_NAME,"selenium_price")
+
+sleep(10)
+
+
+
+
 selenium_surface.send_keys("100")
 selenium_price.send_keys("655600")
-# selenium_images.send_keys()
+
 button_2.click()
+sleep(2)
 
-#Etape3
+
+button_3 = driver.find_element(By.CLASS_NAME,"selenium_btn3")
+
+selenium_phone = driver.find_element(By.CLASS_NAME,"selenium_phone")
+selenium_description = driver.find_element(By.CLASS_NAME,"selenium_description")
+
 selenium_phone.send_keys("0558713153")
-selenium_description.send_keys("belle miason ")
+selenium_description.send_keys("selenium_example ")
 button_3.click()
+sleep(2)
 
-#Etape4
-sleep(5)
+
+button_4 = driver.find_element(By.CLASS_NAME,"selenium_btn4")
 button_4.click()
 sleep(2)
 
 
-# Get the title of the page
+
 title = driver.title
 
-# Print the title
 print("Page title:", title)
-
-
-
-
-# driver.quit()
+sleep(15)
+driver.quit()
